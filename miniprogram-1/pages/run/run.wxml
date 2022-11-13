@@ -1,0 +1,28 @@
+<view class="head" style="flex-direction:row;">
+    <view bindtap="{{isedn?'':'Run'}}" capture-bind:longpress="end" class="buttons {{isrun?'play':''}}">{{run}}</view>
+    <text>\n里程数：{{meters}}km</text>
+    <text>\n\n时间：{{time}}</text>
+</view>
+
+<view class="music {{isplay?'playing':''}}" bindtap="ctrlMusic">
+        <image src="../../resources/music.png"></image>
+</view>
+
+        <image wx:if="{{isedn}}" class="share" bindtap="showEditPage" src="../../resources/分享到.png"></image>
+
+
+<view class="mainView">
+   <map
+        class="mapView"
+        show-location 
+        style="width: 100%; height: 800rpx;"
+        latitude="{{latitude}}"
+        longitude="{{longitude}}"
+        scale="18"
+        polyline="{{polyline}}"
+        markers="{{markers}}"
+        covers="{{covers}}"
+        >
+    </map>
+</view>
+

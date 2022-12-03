@@ -1,0 +1,58 @@
+<tui-loading visible="{{vis}}" text="" />
+<view class="single">
+    <image class="avatar" src="{{item.userInfo.avatarUrl}}" mode="cover" bindtap="goTo" data-openid="{{item.openid}}"></image>
+    <view class='main '>
+        <view class='nickname'>{{item.userInfo.nickName}}</view>
+        <view wx:if="{{item.content != 'null'}}">
+            <view class='main-comtent' style='{{isShowOrHideComtent ? "" : "max-height: 60pt"}}'>
+                {{item.content}}
+            </view>
+        </view>
+        <view class='imgArea' bindtap='showImg' data-outidx="{{index}}">
+            <view wx:for="{{item.postImages}}" wx:key="index">
+                <image src="{{item}}" mode='aspectFill' data-imgidx="{{index}}" />
+            </view>
+        </view>
+       
+        <view>
+            <text>{{nowdate}}</text>
+        </view>
+        <!--底部操作模块-->
+        <view class='timeArea'>
+            <text>{{item.date}}</text> 
+            <text style="margin-left:20rpx;font-size:13px;color:#5882FA;" bindtap="delIt" data-idx="{{item._id}}" wx:if="{{item.openid == openid}}">删除</text>
+            <view class='timeArea-right'>
+                <view class='zan-pinglun' wx:if="{{showBar}}" style="height:90rpx;">
+                    <text class='iconfont icon-xin' data-idx="{{item.id}}" data-index="{{index}}" data-nickname="{{item.nickname}}" catchtap='ilike' wx:if="{{liked==false}}"> 赞</text>
+                    <text class='iconfont icon-xin' data-idx="{{item.id}}" data-index="{{index}}" data-nickname="{{item.nickname}}" wx:if="{{liked==true}}" bindtap="cancelLike"> 取消</text>
+                    <text class='iconfont icon-pinglun' bindtap="pinglun" data-idx="{{item.id}}" data-index="{{index}}">
+                        <text style="margin-left:10rpx;">评论</text>
+                    </text>
+                </view>
+                <text class='iconfont icon-pinglun1' data-idx="{{item.id}}" catchtap='openActionBar'></text>
+            </view>
+        </view>
+        <!--点赞和comment显示-->
+        <view class='commentArea'>
+            <view class='like' wx:if="{{likeList.length!=0}}" style="display: flex;flex-wrap: wrap;flex-direction: row;width:100%;">
+                <text class='iconfont icon-xin'></text>
+                <view wx:for="{{likeList}}" wx:key="index" wx:for-item="likeitem">
+                    <view>{{index == 0?'':','}}{{likeitem.userInfo.nickName}}</view>
+                </view>
+            </view>
+
+            <view class='comment' wx:for="{{commentList}}" wx:for-item="citem" wx:if="{{commentList.length!=0}}" wx:for-index="tindex" wx:key="tindex">
+                <view wx:if="{{citem.replyUserInfo == null}}" bindtap="reply" data-idx="{{citem._id}}" data-replyitem="{{item.userInfo}}" data-index="{{index}}" data-openid="{{citem.openid}}" bindlongpress="deleteComment">
+                    <text class='comment-nickname'>{{citem.userInfo.nickName}}:</text>
+                    <text>{{citem.replyContent}}</text>
+                </view>
+                <view wx:if="{{citem.replyUserInfo != null}}" bindtap="reply" data-idx="{{citem._id}}" data-replyitem="{{item.userInfo}}" data-index="{{index}}" data-openid="{{citem.openid}}" bindlongpress="deleteComment">
+                    <text class='comment-nickname'>{{citem.userInfo.nickName}}</text>
+                    <text>回复</text>
+                    <text class='comment-nickname'>{{citem.replyUserInfo.nickName}}: </text>
+                    <text>{{citem.replyContent}}</text>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>

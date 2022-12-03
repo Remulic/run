@@ -1,0 +1,23 @@
+<!--pages/my/my.wxml-->
+<view class="door">
+  <view wx:if="{{hasUserInfo}}" class="user">
+    <!-- <view class="shangchuan" bindtap="getBackgroumd">
+      <img src="../../resources/Shoulders.png" />
+      <text class="iconfont icon-my"></text>
+    </view> -->
+    <image src="{{userInfo.avatarUrl}}" mode="widthFix"></image>
+    <text>{{userInfo.nickName}}</text>
+    <view class="run">
+        <view class="data">
+           <view class="data1">总运动：</view>
+           <view>{{meter}}公里</view> 
+        </view>
+        <view class="data">
+            <view class="data1">总时间：</view>
+           <view>{{time}}分钟</view> 
+        </view>
+    </view>
+  </view>
+  <button type="primary" bindtap="login" wx:if="{{!hasUserInfo}}">授权登录</button>
+  
+</view>

@@ -1,0 +1,6 @@
+<view clas="mainView">
+    <view class="container">
+        <navigator class="buttons  shadow-blur" url="/pages/run/run">开始跑步</navigator>
+    </view>
+    <button type="primary" bindtap="login" wx:if="{{!userInfo}}">授权登录</button>
+</view>

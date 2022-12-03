@@ -1,0 +1,17 @@
+<!--pages/his/his.wxml-->
+<view class="door">
+  <view wx:if="{{hasUserInfo}}" class="user">
+    <image src="{{images}}" mode="widthFix"></image>
+    <text>{{nickName}}</text>
+    <view class="run">
+        <view class="data">
+           <view class="data1">总运动：</view>
+           <view>{{meter}}公里</view> 
+        </view>
+        <view class="data">
+            <view class="data1">总时间：</view>
+           <view>{{time}}分钟</view> 
+        </view>
+    </view>
+  </view>
+</view>

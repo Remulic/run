@@ -1,0 +1,63 @@
+{
+    "pages": [
+        "pages/home/home",
+        "pages/index/index",
+        "pages/post/post",
+        "pages/my/my",
+        "pages/his/his",
+        "pages/run/run",
+        "pages/means/means",
+        "components/wxrun/wxrun"
+    ],
+    "window": {
+        "backgroundColor": "#ffffff",
+        "backgroundTextStyle": "light",
+        "navigationBarBackgroundColor": "#ffffff",
+        "navigationBarTitleText": "",
+        "navigationBarTextStyle": "black"
+    },
+    "tabBar": {
+        "list": [
+            {
+                "pagePath": "pages/home/home",
+                "text": "跑步",
+                "iconPath": "./resources/跑步.png",
+                "selectedIconPath": "./resources/跑步ing.png"
+            },
+            {
+                "pagePath": "pages/index/index",
+                "text": "朋友圈",
+                "iconPath": "./resources/世界.png",
+                "selectedIconPath": "./resources/世界ing.png"
+            },
+            
+            {
+                "pagePath": "pages/my/my",
+                "text": "我的",
+                "iconPath": "./resources/我的.png",
+                "selectedIconPath": "./resources/我的ing.png"
+            }
+        ]
+    },
+    "useExtendedLib": {
+        "weui": true
+    },
+    "usingComponents": {
+        "cu-custom": "/colorui/components/cu-custom",
+        "mp-toptips": "weui-miniprogram/toptips/toptips",
+        "wxpost": "/components/wxpost/index",
+        "wxcard": "/components/wxcard/index"
+    },
+    "sitemapLocation": "sitemap.json",
+    "permission": {
+        "scope.userLocation": {
+            "desc": "您的位置信息将用于信息服务"
+        }
+    },
+    "requiredPrivateInfos": [
+        "getLocation",
+        "chooseLocation",
+        "onLocationChange",
+        "startLocationUpdate"
+    ]
+}

@@ -1,0 +1,7 @@
+<mp-toptips msg="{{succMsg}}" type="success" show="{{succMsg}}"></mp-toptips>
+<mp-toptips msg="{{errMsg}}" type="error" show="{{errMsg}}"></mp-toptips>
+
+<!-- <wxpost /> -->
+<wxpost id="wxpost" bind:postlistener="postlistener"/>
+
+<!-- <tui-loading visible="{{vis}}" text="上传中" /> -->

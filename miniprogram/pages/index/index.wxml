@@ -1,0 +1,24 @@
+<mp-toptips msg="{{errMsg}}" type="error" show="{{errMsg}}"></mp-toptips>
+<view bindtap='hideShowBar' style="background-color:white;">
+  <view class='header'>
+    <text class='iconfont icon-sousuo' bindtap="showSearchBox"></text>
+    <text wx:if="{{!hasInput}}">大世界</text>
+    <input wx:if="{{hasInput}}" type="text" bindblur="getInput" placeholder="请输入名称" class="shadow shadow-lg search"/>
+    <text class='iconfont icon-xiangji' bindtap='showEditPage'></text>
+  </view>
+  <button type='primary' size='default' wx:if="{{!hasUserInfo}}" 
+    bindtap="getUserProfile"> 授权获取头像和昵称 </button>
+  <!--遍历展示朋友圈信息-->
+  <view  wx:for="{{postList}}" wx:key="index" wx:for-item="item">
+    <wxcard item="{{item}}" id="wxcard" class ="card" bind:baraction="baraction" bind:deletepost="deletepost"></wxcard> 
+  </view> 
+</view>
+<!-- <view>
+  <input type="text"  class="search" wx:if="{{showSearch}}"/>
+</view> -->
+<view class="cu-bar input" style="border: 1px solid grey;height:100rpx; position: fixed;width: 100%;bottom:{{bottom}}px" wx:if="{{postId!=''}}">
+    <input class="solid-bottom" focus="{{false}}" model:value="{{replyContent}}"  bindinput="taInput" maxlength="300"
+        cursor-spacing="10"></input>
+    <button class="cu-btn bg-green shadow-blur" bindtap="handleSend">发送</button>
+</view>
+
